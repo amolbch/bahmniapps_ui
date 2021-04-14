@@ -24,9 +24,11 @@ angular.module('bahmni.clinical')
             });
 
             var cleanUpListenerPrintDashboard = $scope.$on("event:printDashboard", function (event, tab) {
+                console.log("printScope.tabBeingPrinted  ::",$filter);
                 var printScope = $scope.$new();
                 printScope.isDashboardPrinting = true;
                 printScope.tabBeingPrinted = tab || clinicalDashboardConfig.currentTab;
+                console.log("printScope.tabBeingPrinted  ::",printScope.tabBeingPrinted );
                 var dashboardModel = Bahmni.Common.DisplayControl.Dashboard.create(printScope.tabBeingPrinted, $filter);
                 spinner.forPromise(diseaseTemplateService.getLatestDiseaseTemplates(
                     $stateParams.patientUuid,
@@ -41,6 +43,7 @@ angular.module('bahmni.clinical')
             });
 
             $scope.$on("$destroy", function () {
+                console.log("FGHF");
                 cleanUpListenerSwitchDashboard();
                 cleanUpListenerPrintDashboard();
             });

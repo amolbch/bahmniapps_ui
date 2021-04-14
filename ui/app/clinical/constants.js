@@ -69,7 +69,7 @@ Bahmni.Clinical.Constants = (function () {
         bacteriologyConstants: bacteriologyConstants,
         globalPropertyToFetchActivePatients: 'emrapi.sqlSearch.activePatients',
         adtPrivilege: "app:adt",
-        adtForwardUrl: "../bedmanagement/#/home/"
+        adtForwardUrl: "../adt/#/patient/{{patientUuid}}/visit/{{visitUuid}}/"
     };
 })();
 

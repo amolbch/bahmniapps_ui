@@ -29,7 +29,7 @@ angular.module('bahmni.registration')
             };
             return patientServiceStrategy.search(config);
         };
-
+ 
         var searchByIdentifier = function (identifier) {
             return $http.get(Bahmni.Common.Constants.bahmniSearchUrl + "/patient", {
                 method: "GET",
@@ -40,7 +40,13 @@ angular.module('bahmni.registration')
                 withCredentials: true
             });
         };
-
+        var ethiopianDateConversion = function (date,month,year) {
+            console.log("dob "+date +" month ::"+ month+ "year ::"+year);
+            // return $http.get(Bahmni.Common.Constants.bahmniSearchUrl + "/patient/"+date+"/"+month+"/"+year+"", {
+            //     method: "GET",
+            //     withCredentials: true
+            // });
+        };
         var searchByNameOrIdentifier = function (query, limit) {
             return $http.get(Bahmni.Common.Constants.bahmniSearchUrl + "/patient", {
                 method: "GET",
@@ -86,6 +92,7 @@ angular.module('bahmni.registration')
             update: update,
             get: get,
             updateImage: updateImage,
-            searchByNameOrIdentifier: searchByNameOrIdentifier
+            searchByNameOrIdentifier: searchByNameOrIdentifier,
+            ethiopianDateConversion:ethiopianDateConversion
         };
     }]);

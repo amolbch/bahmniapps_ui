@@ -42,35 +42,39 @@ angular.module('bahmni.clinical').controller('ConsultationController',
             };
 
             var setPrintAction = function (event, tab) {
+                console.log("event",event,"tab inside ::::",tab);
                 tab.print = function () {
                     $rootScope.$broadcast(event, tab);
                 };
             };
             var setDashboardPrintAction = _.partial(setPrintAction, "event:printDashboard", _);
             var setVisitTabPrintAction = function (tab) {
+                console.log("tab inside ::::",tab);
                 tab.print = function () {
+                    
                     var url = $state.href('patient.dashboard.visitPrint', {
                         visitUuid: visitHistory.activeVisit.uuid,
                         tab: tab.title,
                         print: 'print'
                     });
-                    window.open(url, '_blank');
+                    console.log(" tab: tab.title >>>>>>",tab.title);
+                    console.log("visitHistory.activeVisit.uuid ::",visitHistory.activeVisit.uuid);
+                    console.log("url ::",url);
+                    window.open(url);
                 };
             };
 
             _.each(visitConfig.tabs, setVisitTabPrintAction);
             _.each(clinicalDashboardConfig.tabs, setDashboardPrintAction);
             $scope.printList = _.concat(clinicalDashboardConfig.tabs, visitConfig.tabs);
+            console.log("printList ::",  $scope.printList);
 
             clinicalDashboardConfig.quickPrints = appService.getAppDescriptor().getConfigValue('quickPrints');
             $scope.printDashboard = function (tab) {
-                if (tab) {
-                    tab.print();
-                } else {
-                    clinicalDashboardConfig.currentTab.print();
-                }
-            };
-
+                console.log("tab..................... ::::")
+                console.log(tab);
+                tab.print();
+            }; 
             $scope.allowConsultation = function () {
                 return appService.getAppDescriptor().getConfigValue('allowConsultationWhenNoOpenVisit');
             };

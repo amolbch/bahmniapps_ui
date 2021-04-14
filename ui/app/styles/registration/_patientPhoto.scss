@@ -75,8 +75,6 @@ video{
   }
   .row-clear{
     @include clearfix();
-    margin-top: 10px;
-
   }
 }
 
@@ -132,33 +130,8 @@ video{
   }
 }
 
-.ui-photo{
-  background:$bahmniPrimaryColor;
-  color: aliceblue;
-  padding: .4em 1em;
-  padding-right: 277px; 
-  width: 10px;
-  font-weight: bold;
-}
-
-.ui-upload-photo{
-  background:$bahmniPrimaryColor;
-  color: aliceblue;
-  padding: .4em 1em;
-  padding-right: 116px; 
-  width: 10px;
-  font-weight: bold;
-  
-}
 /*** overriding jquery styling start****/
 .ui-widget-header{
-
-  border:1px solid lighten(#f7f7f7, 10%);
-  background:#f7f7f7;
-}
-
-.ui-widget-header-upload{
-  
   border:1px solid lighten($bahmniPrimaryColor, 10%);
   background:$bahmniPrimaryColor;
 }

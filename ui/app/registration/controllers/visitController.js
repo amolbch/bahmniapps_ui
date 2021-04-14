@@ -257,7 +257,6 @@ angular.module('bahmni.registration')
                     });
                 }
                 messagingService.showMessage('info', 'REGISTRATION_LABEL_SAVED');
-                $location.url(Bahmni.Registration.Constants.patientSearchURL);
             };
 
             $scope.submit = function () {

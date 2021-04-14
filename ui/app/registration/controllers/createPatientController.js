@@ -14,7 +14,7 @@ angular.module('bahmni.registration')
 
             var getPersonAttributeTypes = function () {
                 return $rootScope.patientConfiguration.attributeTypes;
-            };
+            }; 
 
             var prepopulateDefaultsInFields = function () {
                 var personAttributeTypes = getPersonAttributeTypes();
@@ -151,6 +151,9 @@ angular.module('bahmni.registration')
             };
 
             var createPatient = function (jumpAccepted) {
+   
+                $scope.patient.Ethiopian_DOB =$rootScope.dob;
+               
                 return patientService.create($scope.patient, jumpAccepted).then(function (response) {
                     copyPatientProfileDataToScope(response);
                 }, function (response) {
@@ -175,7 +178,11 @@ angular.module('bahmni.registration')
                     }
                 });
             };
-
+           var ethiopianDateConversion = function(){
+            return patientService.ethiopianDateConversion().then(function (response) {
+                console.log(response);
+            });
+           }
             var createPromise = function () {
                 var deferred = $q.defer();
                 createPatient().finally(function () {

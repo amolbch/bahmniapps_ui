@@ -5,7 +5,7 @@ var RESTWS_V1 = hostUrl + "/openmrs/ws/rest/v1";
 
 Bahmni.Registration.Constants = {
     openmrsUrl: hostUrl + "/openmrs",
-    registrationEncounterType: "REG",
+    registrationEncounterType: "REG", 
     baseOpenMRSRESTURL: RESTWS_V1,
     patientImageUrlByPatientUuid: RESTWS_V1 + "/patientImage?patientUuid=",
     bahmniRESTBaseURL: hostUrl + "/openmrs/ws/rest/v1/bahmnicore",

@@ -89,6 +89,7 @@ angular.module('bahmni.registration')
                 };
 
                 $scope.setSubmitSource = function (source) {
+                    console.log("Source ",source)
                     $scope.actions.submitSource = source;
                 };
 
@@ -102,8 +103,9 @@ angular.module('bahmni.registration')
                 };
 
                 $scope.actions.followUpAction = function (patientProfileData) {
+                    console.log("patientProfileData ::",patientProfileData);
                     messagingService.clearAll();
-                    switch ($scope.actions.submitSource) {
+                    switch ($scope.actions.submitSource) { 
                     case 'startVisit':
                         var entry = getForwardUrlEntryForVisitFromTheConfig();
                         var forwardUrl = entry ? entry.forwardUrl : undefined;
@@ -120,6 +122,7 @@ angular.module('bahmni.registration')
                 };
 
                 var handleConfigAction = function (patientProfileData) {
+                    console.log("patientProfileData :: patientProfileData ",patientProfileData);
                     var forwardUrl = appService.getAppDescriptor().formatUrl($scope.actionConfig.extensionParams.forwardUrl, {'patientUuid': patientProfileData.patient.uuid});
                     if (!self.hasActiveVisit) {
                         createVisit(patientProfileData, forwardUrl);
